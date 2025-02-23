@@ -2,7 +2,10 @@ document.addEventListener("DOMContentLoaded", function () {
   let footer = document.getElementById("ul"); // Footer element
   let lastScrollY = window.scrollY;
   let timeout;
+<<<<<<< HEAD
   let isScrolling = false;
+=======
+>>>>>>> parent of fc65a9d (Update onscrollhidefooter.js)
 
   function hideFooter() {
     footer.style.transform = "translateY(100%)"; // Move footer down (hide)
@@ -19,7 +22,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentScrollY = window.scrollY;
 
     if (currentScrollY !== lastScrollY) {
-      hideFooter(); // Hide footer while scrolling
+      // Scrolling down - hide footer
+      hideFooter();
     }
 
     lastScrollY = currentScrollY;
@@ -27,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Show footer only **after scrolling has fully stopped for 1 second**
 
     timeout = setTimeout(() => {
+<<<<<<< HEAD
       if (!isScrolling) {
         showFooter();
       } }, 1000);
@@ -58,3 +63,14 @@ document.addEventListener("DOMContentLoaded", function () {
      window.addEventListener("touchstart", handleTouchStart, { passive: true });
      window.addEventListener("touchmove", handleTouchMove, { passive: true });
      window.addEventListener("touchend", handleTouchEnd, { passive: true }); });
+=======
+      showFooter();
+    }, 1000);
+  }
+
+  // Apply event listeners for both desktop and mobile
+  window.addEventListener("scroll", handleScroll, { passive: true });
+  window.addEventListener("touchmove", handleScroll, { passive: true });
+  window.addEventListener("wheel", handleScroll, { passive: true });
+});
+>>>>>>> parent of fc65a9d (Update onscrollhidefooter.js)
