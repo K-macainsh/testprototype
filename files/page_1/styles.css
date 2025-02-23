@@ -24,7 +24,7 @@
   position:fixed;
   left:0px;
   bottom:0px;
-  transition: transform 0.3 ease-in-out;
+  transition: transform 0.4s ease-in-out;
   transform: translateY(0);
 }
 #u0_state0 {
