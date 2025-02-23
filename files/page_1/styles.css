@@ -1,12 +1,16 @@
-﻿body {
-  margin:0px;
+﻿html, body {
+  margin:0;
+  padding: 0;
   background-image:none;
   position:static;
   left:auto;
-  width:320px;
+  width:100%;
   margin-left:0;
   margin-right:0;
   text-align:left;
+  overflow-x:hidden;
+  overscroll-behavior: none;
+  touch-action: manipulation;
 }
 .form_sketch {
   border-color:transparent;
@@ -20,6 +24,8 @@
   position:fixed;
   left:0px;
   bottom:0px;
+  transition: transform 0.3 ease-in-out;
+  transform: translateY(0);
 }
 #u0_state0 {
   position:relative;
