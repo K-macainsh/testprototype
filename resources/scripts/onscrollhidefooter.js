@@ -16,11 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let currentScrollY = window.scrollY;
 
-    if (currentScrollY > lastScrollY) {
+    if (currentScrollY !== lastScrollY) {
       // Scrolling down - hide footer
-      hideFooter();
-    } else if (currentScrollY < lastScrollY) {
-      // Scrolling up - hide footer
       hideFooter();
     }
 
@@ -32,20 +29,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 1000);
   }
 
-  function handleTouchScroll() {
-    hideFooter();
-    clearTimeout(timeout);
-
-    timeout = setTimeout(() => {
-      showFooter();
-    }, 1000);
-  }
-
-
-  }
   // Apply event listeners for both desktop and mobile
   window.addEventListener("scroll", handleScroll, { passive: true });
-  document.addEventListener("touchstart", handleTouchScroll, { passive: true });
-  document.addEventListener("touchmove", handleTouchScroll, { passive: true });
-  document.addEventListener("wheel", handleScroll, { passive: true });
+  window.addEventListener("touchmove", handleScroll, { passive: true });
+  window.addEventListener("wheel", handleScroll, { passive: true });
 });
