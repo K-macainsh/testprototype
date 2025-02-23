@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  let footer = document.getElementById("ul"); // Footer element
+  let footer = document.getElementById("u0"); // Footer element
   let lastScrollY = window.scrollY; let timeout;
   let isScrolling = false; // Tracks scrolling activity
 
