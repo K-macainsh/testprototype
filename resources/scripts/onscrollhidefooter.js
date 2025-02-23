@@ -1,35 +1,31 @@
 document.addEventListener("DOMContentLoaded", function () {
-  let footer = document.getElementById("u0"); // Footer element
+  let footer = document.getElementById("ul"); // Footer element
   let lastScrollY = window.scrollY;
-  let timeout;
+  let isScrolling; // Tracks scrolling activity
 
   function hideFooter() {
-    footer.style.transform = "translateY(100%)";
+    footer.style.transform = "translateY(100%)"; // Move footer down (hide)
   }
 
   function showFooter() {
-    footer.style.transform = "translateY(0)";
+    footer.style.transform = "translateY(0)"; // Move footer up (show)
   }
 
-  function handleScroll() {
-    clearTimeout(timeout); let currentScrollY = window.scrollY;
+  function handleScroll() { clearTimeout(isScrolling); // Reset the timeout
+    let currentScrollY = window.scrollY;
 
-    if (currentScrollY > lastScrollY) {
-      // Scrolling down
-      hideFooter();
-    } else {
-      // Scrolling up
+    if (currentScrollY !== lastScrollY) {
+      // Still scrolling, keep footer hidden
       hideFooter();
     }
 
     lastScrollY = currentScrollY;
-    // Wait before showing the footer again
-    timeout = setTimeout(() => {
+    // Only show the footer if scrolling has completely stopped for 800ms
+    isScrolling = setTimeout(() => {
       showFooter();
-     }, 500);
-   }
-   // Detect scrolling for both desktop and mobile
-   window.addEventListener("scroll", handleScroll);
-   window.addEventListener("touchstart", handleScroll); // Detects touch start
-   window.addEventListener("touchmove", handleScroll); // Detects finger movement
- });
+     }, 800);
+    }
+    // Works for both desktop & mobile
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    document.addEventListener("touchmove", handleScroll, { passive: true });
+  });
